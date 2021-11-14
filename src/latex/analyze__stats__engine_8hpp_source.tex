@@ -1,0 +1,79 @@
+\hypertarget{analyze__stats__engine_8hpp_source}{}\doxysection{analyze\+\_\+stats\+\_\+engine.\+hpp}
+\mbox{\hyperlink{analyze__stats__engine_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_\_ANALYZE\_STATISTICS\_\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_\_ANALYZE\_STATISTICS\_\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <boost/algorithm/string.hpp>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <mutex>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <regex>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <thread>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <unordered\_map>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{task__queue_8hpp}{task\_queue.hpp}}"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{utils_8hpp}{utils.hpp}}"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacelibs}{libs}} \{}
+\DoxyCodeLine{15     \textcolor{keyword}{namespace }analysis \{}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{22 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} U>}
+\DoxyCodeLine{23 \textcolor{keyword}{class }\mbox{\hyperlink{classlibs_1_1analysis_1_1analyze__stats__engine}{analyze\_stats\_engine}}}
+\DoxyCodeLine{24 \{}
+\DoxyCodeLine{25     \textcolor{keyword}{private}:}
+\DoxyCodeLine{26         std::unordered\_map<T, U> m\_word\_freq\{\};}
+\DoxyCodeLine{27         std::unordered\_map<T, std::vector<U>> m\_smileys\{\};}
+\DoxyCodeLine{28         std::unique\_ptr<libs::safe\_datastructure::task\_queue<T, U>> m\_queue\{\};}
+\DoxyCodeLine{29         std::vector<std::thread> m\_threads\{\};}
+\DoxyCodeLine{30         std::mutex m\_mtx;}
+\DoxyCodeLine{31         std::condition\_variable m\_cv;   }
+\DoxyCodeLine{32     \textcolor{keyword}{public}:}
+\DoxyCodeLine{37         \mbox{\hyperlink{classlibs_1_1analysis_1_1analyze__stats__engine_ada7dd7fb01da0fa594e9a44f8244e35a}{analyze\_stats\_engine}}(std::unique\_ptr<\mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue}{libs::safe\_datastructure::task\_queue<T, U>}}> queue): }
+\DoxyCodeLine{38             m\_queue(std::move(queue)) \{\}}
+\DoxyCodeLine{42         \mbox{\hyperlink{classlibs_1_1analysis_1_1analyze__stats__engine_a5ba63ef16a532318b92ce3c42ae578bf}{\string~analyze\_stats\_engine}}() \{}
+\DoxyCodeLine{43         \}}
+\DoxyCodeLine{48         \textcolor{keywordtype}{void} \mbox{\hyperlink{classlibs_1_1analysis_1_1analyze__stats__engine_a393d309a32b511841d73cf5565665886}{analyze}}() \{}
+\DoxyCodeLine{49             \textcolor{keywordflow}{if}(m\_queue) \{}
+\DoxyCodeLine{50                 \textcolor{keywordtype}{size\_t} size = m\_queue.get()-\/>size();}
+\DoxyCodeLine{51                 \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < size; ++i) \{}
+\DoxyCodeLine{52                     m\_threads.emplace\_back(std::thread([\textcolor{keyword}{this}]()}
+\DoxyCodeLine{53                     \{}
+\DoxyCodeLine{54                         \textcolor{keywordflow}{if}(m\_queue) \{}
+\DoxyCodeLine{55                             \textcolor{keyword}{auto} front = m\_queue.get()-\/>pop();}
+\DoxyCodeLine{56                             m\_mtx.lock();}
+\DoxyCodeLine{57                             libs::utils::search\_smileys<T, U>(*front.get(), m\_smileys);}
+\DoxyCodeLine{58                             m\_mtx.unlock();}
+\DoxyCodeLine{59                             std::vector<T> words = \mbox{\hyperlink{namespacelibs_1_1utils_ae5a508f74be891b9e73e2073abda2e5b}{libs::utils::split\_by\_any\_of\_special\_character}}(std::get<0>(*front.get()));}
+\DoxyCodeLine{60                             \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\& word: words) \{}
+\DoxyCodeLine{61                                 m\_mtx.lock();}
+\DoxyCodeLine{62                             \textcolor{keywordflow}{if}(!word.empty()) \{}
+\DoxyCodeLine{63                                 ++m\_word\_freq[word];}
+\DoxyCodeLine{64                             \}}
+\DoxyCodeLine{65                             m\_mtx.unlock();}
+\DoxyCodeLine{66                             \}}
+\DoxyCodeLine{67                         \}}
+\DoxyCodeLine{68                                           }
+\DoxyCodeLine{69                       ;\})}
+\DoxyCodeLine{70                     );}
+\DoxyCodeLine{71                 \}}
+\DoxyCodeLine{72                 \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < m\_threads.size(); ++i) \{}
+\DoxyCodeLine{73                     m\_threads[i].join();}
+\DoxyCodeLine{74                 \}}
+\DoxyCodeLine{75             \}}
+\DoxyCodeLine{76         \}}
+\DoxyCodeLine{81         std::unique\_ptr<libs::safe\_datastructure::task\_queue<T, U>> \mbox{\hyperlink{classlibs_1_1analysis_1_1analyze__stats__engine_ace20b15fe07948df0ab069bfcea1536f}{get\_task\_queue}}() \{}
+\DoxyCodeLine{82             \textcolor{keywordflow}{return} std::move(m\_queue);}
+\DoxyCodeLine{83         \}}
+\DoxyCodeLine{88         std::unordered\_map<T, U> \mbox{\hyperlink{classlibs_1_1analysis_1_1analyze__stats__engine_a744c9a3e660ec8d6c9531cf8b0e263d0}{get\_map}}() \{}
+\DoxyCodeLine{89             \textcolor{keywordflow}{return} m\_word\_freq;}
+\DoxyCodeLine{90         \}}
+\DoxyCodeLine{95         std::unordered\_map<T, std::vector<U>> \mbox{\hyperlink{classlibs_1_1analysis_1_1analyze__stats__engine_a0c4c78f636504c3abe8f472525eb0f10}{get\_smileys}}() \{}
+\DoxyCodeLine{96             \textcolor{keywordflow}{return} m\_smileys;}
+\DoxyCodeLine{97         \}}
+\DoxyCodeLine{98 \};}
+\DoxyCodeLine{99 \}}
+\DoxyCodeLine{100 \}}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_\_ANALYZE\_STATISTICS\_\_}}
+
+\end{DoxyCode}

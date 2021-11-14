@@ -1,0 +1,139 @@
+\hypertarget{classlibs_1_1db_1_1db__engine}{}\doxysection{libs\+::db\+::db\+\_\+engine Class Reference}
+\label{classlibs_1_1db_1_1db__engine}\index{libs::db::db\_engine@{libs::db::db\_engine}}
+
+
+{\ttfamily \#include $<$db\+\_\+engine.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlibs_1_1db_1_1db__engine_ab009075b91d766397ec8ac33b6b0ed1a}{db\+\_\+engine}} ()=default
+\item 
+\mbox{\hyperlink{classlibs_1_1db_1_1db__engine_a4cb18edcdb313950f40c245978d86c08}{db\+\_\+engine}} (const std\+::string \&db\+\_\+name)
+\item 
+\mbox{\hyperlink{classlibs_1_1db_1_1db__engine_a2e43669458dce058ab525a0e9840e68b}{$\sim$db\+\_\+engine}} ()
+\item 
+int \mbox{\hyperlink{classlibs_1_1db_1_1db__engine_a26a9c830b3212ec2683a2727721e55b1}{open}} (const std\+::string \&db\+\_\+name)
+\item 
+bool \mbox{\hyperlink{classlibs_1_1db_1_1db__engine_a036bd162ecf5024b9bdf0a1e97f248bd}{is\+\_\+open}} () const
+\item 
+int \mbox{\hyperlink{classlibs_1_1db_1_1db__engine_a02dfe028b09cf57c6cb6af03840ab2fe}{execute\+\_\+command}} (const std\+::string \&cmd)
+\item 
+void \mbox{\hyperlink{classlibs_1_1db_1_1db__engine_ae324abf101ce41784de040c3209c1e6a}{close}} ()
+\item 
+std\+::vector$<$ key\+\_\+val\+\_\+pair $>$ \mbox{\hyperlink{classlibs_1_1db_1_1db__engine_ae6e85dabf1d817d3fc34c4530cf62403}{get\+\_\+last\+\_\+query\+\_\+result}} ()
+\item 
+std\+::vector$<$ key\+\_\+val\+\_\+pair $>$ \mbox{\hyperlink{classlibs_1_1db_1_1db__engine_a691e9911d7c60980a31ed7ea0b8fd477}{get\+\_\+and\+\_\+clear\+\_\+last\+\_\+query\+\_\+result}} ()
+\item 
+void \mbox{\hyperlink{classlibs_1_1db_1_1db__engine_a2d3d459a1c4104aa72171ea753126569}{clear\+\_\+last\+\_\+result}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Wraps up native db queries, by this providing an high level interface sql interaction interface 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlibs_1_1db_1_1db__engine_ab009075b91d766397ec8ac33b6b0ed1a}\label{classlibs_1_1db_1_1db__engine_ab009075b91d766397ec8ac33b6b0ed1a}} 
+\index{libs::db::db\_engine@{libs::db::db\_engine}!db\_engine@{db\_engine}}
+\index{db\_engine@{db\_engine}!libs::db::db\_engine@{libs::db::db\_engine}}
+\doxysubsubsection{\texorpdfstring{db\_engine()}{db\_engine()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily libs\+::db\+::db\+\_\+engine\+::db\+\_\+engine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+Defaulted constructor \mbox{\Hypertarget{classlibs_1_1db_1_1db__engine_a4cb18edcdb313950f40c245978d86c08}\label{classlibs_1_1db_1_1db__engine_a4cb18edcdb313950f40c245978d86c08}} 
+\index{libs::db::db\_engine@{libs::db::db\_engine}!db\_engine@{db\_engine}}
+\index{db\_engine@{db\_engine}!libs::db::db\_engine@{libs::db::db\_engine}}
+\doxysubsubsection{\texorpdfstring{db\_engine()}{db\_engine()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily libs\+::db\+::db\+\_\+engine\+::db\+\_\+engine (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{db\+\_\+name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor with an argument 
+\begin{DoxyParams}{Parameters}
+{\em db\+\_\+name} & is a {\ttfamily std\+::string} which represents the database name \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlibs_1_1db_1_1db__engine_a2e43669458dce058ab525a0e9840e68b}\label{classlibs_1_1db_1_1db__engine_a2e43669458dce058ab525a0e9840e68b}} 
+\index{libs::db::db\_engine@{libs::db::db\_engine}!````~db\_engine@{$\sim$db\_engine}}
+\index{````~db\_engine@{$\sim$db\_engine}!libs::db::db\_engine@{libs::db::db\_engine}}
+\doxysubsubsection{\texorpdfstring{$\sim$db\_engine()}{~db\_engine()}}
+{\footnotesize\ttfamily libs\+::db\+::db\+\_\+engine\+::$\sim$db\+\_\+engine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Destructor uses RAII to close connection with db 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlibs_1_1db_1_1db__engine_a2d3d459a1c4104aa72171ea753126569}\label{classlibs_1_1db_1_1db__engine_a2d3d459a1c4104aa72171ea753126569}} 
+\index{libs::db::db\_engine@{libs::db::db\_engine}!clear\_last\_result@{clear\_last\_result}}
+\index{clear\_last\_result@{clear\_last\_result}!libs::db::db\_engine@{libs::db::db\_engine}}
+\doxysubsubsection{\texorpdfstring{clear\_last\_result()}{clear\_last\_result()}}
+{\footnotesize\ttfamily void libs\+::db\+::db\+\_\+engine\+::clear\+\_\+last\+\_\+result (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Cleans the last query result \begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibs_1_1db_1_1db__engine_ae324abf101ce41784de040c3209c1e6a}\label{classlibs_1_1db_1_1db__engine_ae324abf101ce41784de040c3209c1e6a}} 
+\index{libs::db::db\_engine@{libs::db::db\_engine}!close@{close}}
+\index{close@{close}!libs::db::db\_engine@{libs::db::db\_engine}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void libs\+::db\+::db\+\_\+engine\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Closes the db connection \begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibs_1_1db_1_1db__engine_a02dfe028b09cf57c6cb6af03840ab2fe}\label{classlibs_1_1db_1_1db__engine_a02dfe028b09cf57c6cb6af03840ab2fe}} 
+\index{libs::db::db\_engine@{libs::db::db\_engine}!execute\_command@{execute\_command}}
+\index{execute\_command@{execute\_command}!libs::db::db\_engine@{libs::db::db\_engine}}
+\doxysubsubsection{\texorpdfstring{execute\_command()}{execute\_command()}}
+{\footnotesize\ttfamily int libs\+::db\+::db\+\_\+engine\+::execute\+\_\+command (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{cmd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Executes sql query 
+\begin{DoxyParams}{Parameters}
+{\em cmd} & the sql command that should be executed $\ast$ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily int} which indicates whether the sql query succeeded 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibs_1_1db_1_1db__engine_a691e9911d7c60980a31ed7ea0b8fd477}\label{classlibs_1_1db_1_1db__engine_a691e9911d7c60980a31ed7ea0b8fd477}} 
+\index{libs::db::db\_engine@{libs::db::db\_engine}!get\_and\_clear\_last\_query\_result@{get\_and\_clear\_last\_query\_result}}
+\index{get\_and\_clear\_last\_query\_result@{get\_and\_clear\_last\_query\_result}!libs::db::db\_engine@{libs::db::db\_engine}}
+\doxysubsubsection{\texorpdfstring{get\_and\_clear\_last\_query\_result()}{get\_and\_clear\_last\_query\_result()}}
+{\footnotesize\ttfamily std\+::vector$<$ key\+\_\+val\+\_\+pair $>$ libs\+::db\+::db\+\_\+engine\+::get\+\_\+and\+\_\+clear\+\_\+last\+\_\+query\+\_\+result (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Gets the last query result and cleans-\/up it \begin{DoxyReturn}{Returns}
+{\ttfamily std\+::vector\texorpdfstring{$<$}{<}std\+::pair\texorpdfstring{$<$}{<}std\+::string, std\+::string\texorpdfstring{$>$}{>}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibs_1_1db_1_1db__engine_ae6e85dabf1d817d3fc34c4530cf62403}\label{classlibs_1_1db_1_1db__engine_ae6e85dabf1d817d3fc34c4530cf62403}} 
+\index{libs::db::db\_engine@{libs::db::db\_engine}!get\_last\_query\_result@{get\_last\_query\_result}}
+\index{get\_last\_query\_result@{get\_last\_query\_result}!libs::db::db\_engine@{libs::db::db\_engine}}
+\doxysubsubsection{\texorpdfstring{get\_last\_query\_result()}{get\_last\_query\_result()}}
+{\footnotesize\ttfamily std\+::vector$<$ key\+\_\+val\+\_\+pair $>$ libs\+::db\+::db\+\_\+engine\+::get\+\_\+last\+\_\+query\+\_\+result (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Gets the last query result \begin{DoxyReturn}{Returns}
+{\ttfamily std\+::vector\texorpdfstring{$<$}{<}std\+::pair\texorpdfstring{$<$}{<}std\+::string, std\+::string\texorpdfstring{$>$}{>}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibs_1_1db_1_1db__engine_a036bd162ecf5024b9bdf0a1e97f248bd}\label{classlibs_1_1db_1_1db__engine_a036bd162ecf5024b9bdf0a1e97f248bd}} 
+\index{libs::db::db\_engine@{libs::db::db\_engine}!is\_open@{is\_open}}
+\index{is\_open@{is\_open}!libs::db::db\_engine@{libs::db::db\_engine}}
+\doxysubsubsection{\texorpdfstring{is\_open()}{is\_open()}}
+{\footnotesize\ttfamily bool libs\+::db\+::db\+\_\+engine\+::is\+\_\+open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Checks whether or not the db connectiom is established \begin{DoxyReturn}{Returns}
+{\ttfamily bool} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibs_1_1db_1_1db__engine_a26a9c830b3212ec2683a2727721e55b1}\label{classlibs_1_1db_1_1db__engine_a26a9c830b3212ec2683a2727721e55b1}} 
+\index{libs::db::db\_engine@{libs::db::db\_engine}!open@{open}}
+\index{open@{open}!libs::db::db\_engine@{libs::db::db\_engine}}
+\doxysubsubsection{\texorpdfstring{open()}{open()}}
+{\footnotesize\ttfamily int libs\+::db\+::db\+\_\+engine\+::open (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{db\+\_\+name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Opens a db connection 
+\begin{DoxyParams}{Parameters}
+{\em db\+\_\+name} & is a {\ttfamily std\+::string} which represents the database name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily int} which indecates whether or not the open succeeded 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{db__engine_8hpp}{db\+\_\+engine.\+hpp}}\end{DoxyCompactItemize}

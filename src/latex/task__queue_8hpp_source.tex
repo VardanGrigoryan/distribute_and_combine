@@ -1,0 +1,64 @@
+\hypertarget{task__queue_8hpp_source}{}\doxysection{task\+\_\+queue.\+hpp}
+\mbox{\hyperlink{task__queue_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_\_TASK\_QUEUE\_\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_\_TASK\_QUEUE\_\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <condition\_variable>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <mutex>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <queue>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacelibs}{libs}} \{}
+\DoxyCodeLine{10     \textcolor{keyword}{namespace }safe\_datastructure \{}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{17 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} U>}
+\DoxyCodeLine{18 \textcolor{keyword}{class }\mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue}{task\_queue}}}
+\DoxyCodeLine{19 \{}
+\DoxyCodeLine{20 \textcolor{keyword}{public}:}
+\DoxyCodeLine{24   \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue_af9c6fc0c779ddbae7bc59cadf830ed53}{task\_queue}}() \{\}}
+\DoxyCodeLine{28   \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue_ab07427ce162689bd7865ae3960414534}{\string~task\_queue}}() \{\}}
+\DoxyCodeLine{37   \textcolor{keywordtype}{void} \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue_ad825c1325754aa88f8ee7127f91312f0}{push}}(std::tuple<T, U, U>\&\& t)}
+\DoxyCodeLine{38   \{}
+\DoxyCodeLine{39     std::unique\_ptr<std::tuple<T, U, U>> value(std::make\_unique<std::tuple<T, U, U>>(t));}
+\DoxyCodeLine{40     std::lock\_guard<std::mutex> lck(m\_mtx);}
+\DoxyCodeLine{41     m\_queue.push(std::move(value));}
+\DoxyCodeLine{42     m\_cnd.notify\_one();}
+\DoxyCodeLine{43   \}}
+\DoxyCodeLine{52   std::unique\_ptr<std::tuple<T, U, U>> \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue_a16a355700eee2eff3924a4af4117bb39}{pop}}()}
+\DoxyCodeLine{53   \{}
+\DoxyCodeLine{54     std::unique\_lock<std::mutex> lck(m\_mtx);}
+\DoxyCodeLine{55     \textcolor{keywordflow}{if}(m\_queue.empty()) \{}
+\DoxyCodeLine{56         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{57     \}}
+\DoxyCodeLine{58     m\_cnd.wait(lck, [\&]\{ \textcolor{keywordflow}{return} !m\_queue.empty();\});}
+\DoxyCodeLine{59     std::unique\_ptr<std::tuple<T, U, U>> val(std::move(m\_queue.front()));}
+\DoxyCodeLine{60     m\_queue.pop();}
+\DoxyCodeLine{61     \textcolor{keywordflow}{return} val;}
+\DoxyCodeLine{62   \}}
+\DoxyCodeLine{67   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue_a05809a97babb7488ee3e39a0093fefe5}{empty}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{68 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{69       std::lock\_guard<std::mutex> lck(m\_mtx);}
+\DoxyCodeLine{70       \textcolor{keywordflow}{return} m\_queue.empty();}
+\DoxyCodeLine{71   \}}
+\DoxyCodeLine{76   \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue_a213b97c0be55d6003175aafb1903f39c}{size}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{77 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{78       std::lock\_guard<std::mutex> lck(m\_mtx);}
+\DoxyCodeLine{79       \textcolor{keywordflow}{return} m\_queue.size();}
+\DoxyCodeLine{80   \}}
+\DoxyCodeLine{81 \textcolor{keyword}{private}:}
+\DoxyCodeLine{82   \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue_af9c6fc0c779ddbae7bc59cadf830ed53}{task\_queue}}(\textcolor{keyword}{const} \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue}{task\_queue<T, U>}}\&)=\textcolor{keyword}{delete};}
+\DoxyCodeLine{83   \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue}{task\_queue}}\& operator=(\textcolor{keyword}{const} \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue}{task\_queue<T, U>}}\&)=\textcolor{keyword}{delete};}
+\DoxyCodeLine{84   \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue_af9c6fc0c779ddbae7bc59cadf830ed53}{task\_queue}}(\textcolor{keyword}{const} \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue}{task\_queue<T, U>}}\&\&)=\textcolor{keyword}{delete};}
+\DoxyCodeLine{85   \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue}{task\_queue}}\& operator=(\textcolor{keyword}{const} \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue}{task\_queue<T, U>}}\&\&)=\textcolor{keyword}{delete};}
+\DoxyCodeLine{86 \textcolor{keyword}{private}:}
+\DoxyCodeLine{87   std::condition\_variable m\_cnd;}
+\DoxyCodeLine{88   \textcolor{keyword}{mutable} std::mutex m\_mtx;}
+\DoxyCodeLine{89   std::queue<std::unique\_ptr<std::tuple<T, U, U>>> m\_queue;}
+\DoxyCodeLine{90 \};}
+\DoxyCodeLine{91 \}}
+\DoxyCodeLine{92 \}}
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_\_TASK\_QUEUE\_\_}}
+\DoxyCodeLine{94 }
+
+\end{DoxyCode}

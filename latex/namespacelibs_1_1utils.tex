@@ -1,0 +1,52 @@
+\hypertarget{namespacelibs_1_1utils}{}\doxysection{libs\+::utils Namespace Reference}
+\label{namespacelibs_1_1utils}\index{libs::utils@{libs::utils}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{namespacelibs_1_1utils_ae5a508f74be891b9e73e2073abda2e5b}{split\+\_\+by\+\_\+any\+\_\+of\+\_\+special\+\_\+character}} (const std\+::string \&input, boost\+::algorithm\+::token\+\_\+compress\+\_\+mode\+\_\+type e\+Compress=boost\+::token\+\_\+compress\+\_\+on)
+\item 
+{\footnotesize template$<$typename T , typename U $>$ }\\void \mbox{\hyperlink{namespacelibs_1_1utils_aa8291472f528a07fde5f1479a14722ac}{search\+\_\+smileys}} (const std\+::tuple$<$ T, U, U $>$ \&tuple, std\+::unordered\+\_\+map$<$ T, std\+::vector$<$ U $>$ $>$ \&smileys)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacelibs_1_1utils_aa8291472f528a07fde5f1479a14722ac}\label{namespacelibs_1_1utils_aa8291472f528a07fde5f1479a14722ac}} 
+\index{libs::utils@{libs::utils}!search\_smileys@{search\_smileys}}
+\index{search\_smileys@{search\_smileys}!libs::utils@{libs::utils}}
+\doxysubsubsection{\texorpdfstring{search\_smileys()}{search\_smileys()}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+void libs\+::utils\+::search\+\_\+smileys (\begin{DoxyParamCaption}\item[{const std\+::tuple$<$ T, U, U $>$ \&}]{tuple,  }\item[{std\+::unordered\+\_\+map$<$ T, std\+::vector$<$ U $>$ $>$ \&}]{smileys }\end{DoxyParamCaption})}
+
+Uses regular expresions to extract smileys and calculates their global positions into the whole text 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & the key type/smiley character \\
+\hline
+{\em U} & the value type/smileys position \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em tuple} & holds input text, the global position of it\textquotesingle{}s end and the length of that text \\
+\hline
+{\em smileys} & represents a reference to an hash map variable which holds smileys and their positions \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacelibs_1_1utils_ae5a508f74be891b9e73e2073abda2e5b}\label{namespacelibs_1_1utils_ae5a508f74be891b9e73e2073abda2e5b}} 
+\index{libs::utils@{libs::utils}!split\_by\_any\_of\_special\_character@{split\_by\_any\_of\_special\_character}}
+\index{split\_by\_any\_of\_special\_character@{split\_by\_any\_of\_special\_character}!libs::utils@{libs::utils}}
+\doxysubsubsection{\texorpdfstring{split\_by\_any\_of\_special\_character()}{split\_by\_any\_of\_special\_character()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ libs\+::utils\+::split\+\_\+by\+\_\+any\+\_\+of\+\_\+special\+\_\+character (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input,  }\item[{boost\+::algorithm\+::token\+\_\+compress\+\_\+mode\+\_\+type}]{e\+Compress = {\ttfamily boost\+:\+:token\+\_\+compress\+\_\+on} }\end{DoxyParamCaption})}
+
+Splits the text chunk using most severa; special characters as a delimiters 
+\begin{DoxyParams}{Parameters}
+{\em input} & text chunk \\
+\hline
+{\em e\+Compress} & indicates whether to compress intermediate whitespaces \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily std\+::vector\texorpdfstring{$<$}{<}std\+::string\texorpdfstring{$>$}{>}} splitted and/or compressed text chunk 
+\end{DoxyReturn}

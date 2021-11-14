@@ -1,0 +1,27 @@
+\hypertarget{exception_8hpp_source}{}\doxysection{exception.\+hpp}
+\label{exception_8hpp_source}\index{src/exception.hpp@{src/exception.hpp}}
+\mbox{\hyperlink{exception_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_\_EXCEPTION\_HPP\_\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_\_EXCEPTION\_HPP\_\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <exception>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacelibs}{libs}} \{}
+\DoxyCodeLine{8     \textcolor{keyword}{namespace }exception \{}
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{classlibs_1_1exception_1_1custom__exception}{custom\_exception}}: \textcolor{keyword}{public} std::exception \{}
+\DoxyCodeLine{13     \textcolor{keyword}{private}:}
+\DoxyCodeLine{14         \textcolor{keyword}{const} std::string m\_msg;}
+\DoxyCodeLine{15     \textcolor{keyword}{public}:}
+\DoxyCodeLine{20         \mbox{\hyperlink{classlibs_1_1exception_1_1custom__exception_af9edce766f544883148b26e6a7058453}{custom\_exception}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* msg): m\_msg(msg) \{\};}
+\DoxyCodeLine{26         \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classlibs_1_1exception_1_1custom__exception_ab16efbac1b4115edff741e9b9a74886d}{what}}() \textcolor{keyword}{const} throw() \{}
+\DoxyCodeLine{27             \textcolor{keywordflow}{return} m\_msg.c\_str();}
+\DoxyCodeLine{28         \}}
+\DoxyCodeLine{29 \};}
+\DoxyCodeLine{30 \}}
+\DoxyCodeLine{31 \}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//\_\_EXCEPTION\_HPP\_\_}}
+
+\end{DoxyCode}

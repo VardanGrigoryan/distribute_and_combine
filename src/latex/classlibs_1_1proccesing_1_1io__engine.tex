@@ -1,0 +1,196 @@
+\hypertarget{classlibs_1_1proccesing_1_1io__engine}{}\doxysection{libs\+::proccesing\+::io\+\_\+engine\texorpdfstring{$<$}{<} T, U \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classlibs_1_1proccesing_1_1io__engine}\index{libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}}
+
+
+Defines the main engine which is responsible for files, DB-\/queries and task distributions.  
+
+
+
+
+{\ttfamily \#include $<$io\+\_\+engine.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine_a095d0401036348d9100440ab42dbca82}{io\+\_\+engine}} (const std\+::string \&file\+\_\+path, size\+\_\+t block\+\_\+size, const std\+::string \&db\+\_\+name=\char`\"{}\char`\"{})
+\item 
+\mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine_a81ec5bef6a914ef9c259a658e203719b}{io\+\_\+engine}} (const \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{io\+\_\+engine}} \&)=delete
+\item 
+\mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{io\+\_\+engine}} \& \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine_aba0ee48c8f5fb5d11b71df83e79eecb8}{operator=}} (const \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{io\+\_\+engine}} \&)=delete
+\item 
+\mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine_ad72ea689d7793271a1cb49e58821cdb3}{io\+\_\+engine}} (const \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{io\+\_\+engine}} \&\&)=delete
+\item 
+\mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{io\+\_\+engine}} \& \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine_a8a9ee6df4fb6c5ed1536bdd6ac55aa15}{operator=}} (const \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{io\+\_\+engine}} \&\&)=delete
+\item 
+void \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine_aafc9cb96aa0a9bb7f1cd60b57ceb0e6d}{read}} ()
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue}{libs\+::safe\+\_\+datastructure\+::task\+\_\+queue}}$<$ T, U $>$ $>$ \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine_a50108ad91985b807a15bd0664b65d249}{get\+\_\+task\+\_\+queue}} ()
+\item 
+std\+::unordered\+\_\+map$<$ T, U $>$ \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine_afd3ee58b09bd1c39d42a42041af6f5db}{get\+\_\+map}} ()
+\item 
+std\+::unordered\+\_\+map$<$ T, std\+::vector$<$ U $>$ $>$ \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine_aaf2fe3fc3a7fcd1d02c481637be48c6d}{get\+\_\+smileys\+\_\+map}} ()
+\item 
+std\+::vector$<$ std\+::pair$<$ T, T $>$ $>$ \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine_a06509bf4880c4939cf8d282e6776aecb}{get\+\_\+smileys}} (callback2 \&\&cb)
+\item 
+std\+::vector$<$ std\+::pair$<$ T, T $>$ $>$ \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine_aa3b36d5b62ce049723d6411b9603965d}{query\+\_\+n\+\_\+most\+\_\+frequent}} (const size\+\_\+t n, callback2 \&\&cb)
+\item 
+void \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine_ab9d1ea2f644c004c08259dfb40a75f85}{set\+\_\+file\+\_\+path}} (const std\+::string \&file\+\_\+path)
+\item 
+std\+::string \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine_a833aafc23c327bcae7965a85a67622d8}{get\+\_\+file\+\_\+path}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename U$>$\newline
+class libs\+::proccesing\+::io\+\_\+engine$<$ T, U $>$}
+Defines the main engine which is responsible for files, DB-\/queries and task distributions. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & the type of data stored in the map as a key \\
+\hline
+{\em U} & the type of data stored in the map as a value \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlibs_1_1proccesing_1_1io__engine_a095d0401036348d9100440ab42dbca82}\label{classlibs_1_1proccesing_1_1io__engine_a095d0401036348d9100440ab42dbca82}} 
+\index{libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}!io\_engine@{io\_engine}}
+\index{io\_engine@{io\_engine}!libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{io\_engine()}{io\_engine()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+\mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{libs\+::proccesing\+::io\+\_\+engine}}$<$ T, U $>$\+::\mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{io\+\_\+engine}} (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+path,  }\item[{size\+\_\+t}]{block\+\_\+size,  }\item[{const std\+::string \&}]{db\+\_\+name = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+The constructor with arguments
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+path} & the path of the input text file \\
+\hline
+{\em block\+\_\+size} & the size of a block which is using to read the input file by chunks \\
+\hline
+{\em db\+\_\+name} & the name of a database which could be used to process very large files that can\textquotesingle{}t loaded into theram-\/memory at once. It has default empty string value {\ttfamily \char`\"{}\char`\"{}}. If this argument is defined then the database will be used to keep datas on a persisent disk, othewise the ram-\/memory will be used instead. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlibs_1_1proccesing_1_1io__engine_a81ec5bef6a914ef9c259a658e203719b}\label{classlibs_1_1proccesing_1_1io__engine_a81ec5bef6a914ef9c259a658e203719b}} 
+\index{libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}!io\_engine@{io\_engine}}
+\index{io\_engine@{io\_engine}!libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{io\_engine()}{io\_engine()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+\mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{libs\+::proccesing\+::io\+\_\+engine}}$<$ T, U $>$\+::\mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{io\+\_\+engine}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{io\+\_\+engine}}$<$ T, U $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+The copy constructor deleted \mbox{\Hypertarget{classlibs_1_1proccesing_1_1io__engine_ad72ea689d7793271a1cb49e58821cdb3}\label{classlibs_1_1proccesing_1_1io__engine_ad72ea689d7793271a1cb49e58821cdb3}} 
+\index{libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}!io\_engine@{io\_engine}}
+\index{io\_engine@{io\_engine}!libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{io\_engine()}{io\_engine()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+\mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{libs\+::proccesing\+::io\+\_\+engine}}$<$ T, U $>$\+::\mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{io\+\_\+engine}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{io\+\_\+engine}}$<$ T, U $>$ \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+The move constructor deleted 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlibs_1_1proccesing_1_1io__engine_a833aafc23c327bcae7965a85a67622d8}\label{classlibs_1_1proccesing_1_1io__engine_a833aafc23c327bcae7965a85a67622d8}} 
+\index{libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}!get\_file\_path@{get\_file\_path}}
+\index{get\_file\_path@{get\_file\_path}!libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{get\_file\_path()}{get\_file\_path()}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+std\+::string \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{libs\+::proccesing\+::io\+\_\+engine}}$<$ T, U $>$\+::get\+\_\+file\+\_\+path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Gets input file path \begin{DoxyReturn}{Returns}
+{\ttfamily std\+::string} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibs_1_1proccesing_1_1io__engine_afd3ee58b09bd1c39d42a42041af6f5db}\label{classlibs_1_1proccesing_1_1io__engine_afd3ee58b09bd1c39d42a42041af6f5db}} 
+\index{libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}!get\_map@{get\_map}}
+\index{get\_map@{get\_map}!libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{get\_map()}{get\_map()}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+std\+::unordered\+\_\+map$<$ T, U $>$ \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{libs\+::proccesing\+::io\+\_\+engine}}$<$ T, U $>$\+::get\+\_\+map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Gets the word-\/frequency hash map \begin{DoxyReturn}{Returns}
+{\ttfamily std\+::unordered\+\_\+map\texorpdfstring{$<$}{<}T, U\texorpdfstring{$>$}{>}} where keys are the words and the values are their frequencies 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibs_1_1proccesing_1_1io__engine_a06509bf4880c4939cf8d282e6776aecb}\label{classlibs_1_1proccesing_1_1io__engine_a06509bf4880c4939cf8d282e6776aecb}} 
+\index{libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}!get\_smileys@{get\_smileys}}
+\index{get\_smileys@{get\_smileys}!libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{get\_smileys()}{get\_smileys()}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+std\+::vector$<$ std\+::pair$<$ T, T $>$ $>$ \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{libs\+::proccesing\+::io\+\_\+engine}}$<$ T, U $>$\+::get\+\_\+smileys (\begin{DoxyParamCaption}\item[{callback2 \&\&}]{cb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Performs a db query, obtains smiles and their positions then converts it {\ttfamily std\+::vector} \begin{DoxyReturn}{Returns}
+{\ttfamily std\+::vector\texorpdfstring{$<$}{<}std\+::pair\texorpdfstring{$<$}{<}T, T\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}} where the key is a smiley character and the value is it\textquotesingle{}s positions 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibs_1_1proccesing_1_1io__engine_aaf2fe3fc3a7fcd1d02c481637be48c6d}\label{classlibs_1_1proccesing_1_1io__engine_aaf2fe3fc3a7fcd1d02c481637be48c6d}} 
+\index{libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}!get\_smileys\_map@{get\_smileys\_map}}
+\index{get\_smileys\_map@{get\_smileys\_map}!libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{get\_smileys\_map()}{get\_smileys\_map()}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+std\+::unordered\+\_\+map$<$ T, std\+::vector$<$ U $>$ $>$ \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{libs\+::proccesing\+::io\+\_\+engine}}$<$ T, U $>$\+::get\+\_\+smileys\+\_\+map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Gets a hash map which represents smileys and their positions in the input text \begin{DoxyReturn}{Returns}
+{\ttfamily std\+::unordered\+\_\+map\texorpdfstring{$<$}{<}T, std\+::vector\texorpdfstring{$<$}{<}U\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}} where the key is a smiley character and the value is it\textquotesingle{}s positions 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibs_1_1proccesing_1_1io__engine_a50108ad91985b807a15bd0664b65d249}\label{classlibs_1_1proccesing_1_1io__engine_a50108ad91985b807a15bd0664b65d249}} 
+\index{libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}!get\_task\_queue@{get\_task\_queue}}
+\index{get\_task\_queue@{get\_task\_queue}!libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{get\_task\_queue()}{get\_task\_queue()}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue}{libs\+::safe\+\_\+datastructure\+::task\+\_\+queue}}$<$ T, U $>$ $>$ \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{libs\+::proccesing\+::io\+\_\+engine}}$<$ T, U $>$\+::get\+\_\+task\+\_\+queue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Gets the task queue \begin{DoxyReturn}{Returns}
+task queue object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibs_1_1proccesing_1_1io__engine_a8a9ee6df4fb6c5ed1536bdd6ac55aa15}\label{classlibs_1_1proccesing_1_1io__engine_a8a9ee6df4fb6c5ed1536bdd6ac55aa15}} 
+\index{libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+\mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{io\+\_\+engine}} \& \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{libs\+::proccesing\+::io\+\_\+engine}}$<$ T, U $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{io\+\_\+engine}}$<$ T, U $>$ \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+The move assignement operator deleted \mbox{\Hypertarget{classlibs_1_1proccesing_1_1io__engine_aba0ee48c8f5fb5d11b71df83e79eecb8}\label{classlibs_1_1proccesing_1_1io__engine_aba0ee48c8f5fb5d11b71df83e79eecb8}} 
+\index{libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+\mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{io\+\_\+engine}} \& \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{libs\+::proccesing\+::io\+\_\+engine}}$<$ T, U $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{io\+\_\+engine}}$<$ T, U $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+The assignement operator deleted \mbox{\Hypertarget{classlibs_1_1proccesing_1_1io__engine_aa3b36d5b62ce049723d6411b9603965d}\label{classlibs_1_1proccesing_1_1io__engine_aa3b36d5b62ce049723d6411b9603965d}} 
+\index{libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}!query\_n\_most\_frequent@{query\_n\_most\_frequent}}
+\index{query\_n\_most\_frequent@{query\_n\_most\_frequent}!libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{query\_n\_most\_frequent()}{query\_n\_most\_frequent()}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+std\+::vector$<$ std\+::pair$<$ T, T $>$ $>$ \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{libs\+::proccesing\+::io\+\_\+engine}}$<$ T, U $>$\+::query\+\_\+n\+\_\+most\+\_\+frequent (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{n,  }\item[{callback2 \&\&}]{cb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Performs a db query, obtains n most frequent words \begin{DoxyReturn}{Returns}
+{\ttfamily std\+::vector\texorpdfstring{$<$}{<}std\+::pair\texorpdfstring{$<$}{<}T, T\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}} where the key is a word and the value is frequency in the input text 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibs_1_1proccesing_1_1io__engine_aafc9cb96aa0a9bb7f1cd60b57ceb0e6d}\label{classlibs_1_1proccesing_1_1io__engine_aafc9cb96aa0a9bb7f1cd60b57ceb0e6d}} 
+\index{libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}!read@{read}}
+\index{read@{read}!libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+void \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{libs\+::proccesing\+::io\+\_\+engine}}$<$ T, U $>$\+::read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Reads the input text file by chunks and distributes the firther processing to several threads \begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibs_1_1proccesing_1_1io__engine_ab9d1ea2f644c004c08259dfb40a75f85}\label{classlibs_1_1proccesing_1_1io__engine_ab9d1ea2f644c004c08259dfb40a75f85}} 
+\index{libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}!set\_file\_path@{set\_file\_path}}
+\index{set\_file\_path@{set\_file\_path}!libs::proccesing::io\_engine$<$ T, U $>$@{libs::proccesing::io\_engine$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{set\_file\_path()}{set\_file\_path()}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+void \mbox{\hyperlink{classlibs_1_1proccesing_1_1io__engine}{libs\+::proccesing\+::io\+\_\+engine}}$<$ T, U $>$\+::set\+\_\+file\+\_\+path (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets input file path 
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+path} & the path of input file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{io__engine_8hpp}{io\+\_\+engine.\+hpp}}\end{DoxyCompactItemize}

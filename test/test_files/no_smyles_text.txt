@@ -1,0 +1,42 @@
+
+Abstractions in other languages
+Most programming languages are based on abstractions, which are transformed into
+machine code to be executed by the CPU. C++ has evolved into a highly expressive
+language just like many of the other popular programming languages of today. What
+distinguishes C++ from most other languages is that, while the other languages have
+implemented these abstractions at the cost of runtime performance, C++ has always strived
+to implement its abstractions at zero cost at runtime. This doesn't mean that an application
+written in C++ is by default faster than the equivalent in, say, C#. Rather, it means that by
+using C++, you'll have explicit control of the emitted machine code instructions and
+memory footprint if needed.
+To be fair, optimal performance is very rarely required today and compromising
+performance for lower compilation times, garbage collection, or safety, like other languages
+do, is in many cases more reasonable.
+Portability
+C++ has been a popular and comprehensive language for a long time. It's highly compatible
+with C and very little has been deprecated in the language, for better or worse. The history
+and design of C++ has made it to a highly portable language, and the evolution of modern
+C++ has ensured that it will stay that way for a long time to come. C++ is a living language
+and compiler vendors are currently doing a remarkable job to implement new language
+features rapidly.
+Robustness
+In addition to performance, expressiveness, and portability, C++ offers a set of language
+features that gives the programmer the ability to write robust code.
+In our experience, robustness does not refer to strength in the programming language itself
+– it's possible to write robust code in any language. However, strict ownership of resources,
+const correctness, value semantics, type safety, and deterministic destruction of objects are
+some of the features offered by C++ that makes it easier to write robust code. That is, the
+ability to write functions, classes, and libraries that are easy to use and hard to misuse.
+[ 10 ]A Brief Introduction to C++
+Chapter 1
+C++ of today
+To sum it up, C++ of today provides programmers the ability to write an expressive and
+robust code base while still having the ability to target almost any hardware platform or
+real-time requirements. Of the most commonly used languages today, C++ is the only one
+that gives all of these properties.
+The aim of this book
+This book aims to give the reader a solid foundation to write efficient applications as well as
+an insight into strategies for implementing the libraries in modern C++. We have tried to
+take a practical approach to explain how C++ works today where C++14/C++17 features are
+ a natural part of the language, rather than looking at C++ historically.
+

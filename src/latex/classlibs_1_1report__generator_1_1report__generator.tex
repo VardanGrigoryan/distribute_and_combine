@@ -1,0 +1,101 @@
+\hypertarget{classlibs_1_1report__generator_1_1report__generator}{}\doxysection{libs\+::report\+\_\+generator\+::report\+\_\+generator Class Reference}
+\label{classlibs_1_1report__generator_1_1report__generator}\index{libs::report\_generator::report\_generator@{libs::report\_generator::report\_generator}}
+
+
+{\ttfamily \#include $<$report\+\_\+generator.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlibs_1_1report__generator_1_1report__generator_aab1f374eaca60fed05cda5777af46fbc}{report\+\_\+generator}} (const array\+\_\+of\+\_\+entries \&frequency\+\_\+entries, const array\+\_\+of\+\_\+entries \&smiley\+\_\+entries)
+\begin{DoxyCompactList}\small\item\em Constructor with arguments. \end{DoxyCompactList}\item 
+std\+::ostream \& \mbox{\hyperlink{classlibs_1_1report__generator_1_1report__generator_abf95c72d74b91ef92fc2eda6d178703b}{generate\+\_\+xml}} (std\+::ostream \&os)
+\item 
+std\+::ostream \& \mbox{\hyperlink{classlibs_1_1report__generator_1_1report__generator_a2bccb865d47a3660972e94f30b69dacc}{generate\+\_\+file}} (std\+::ostream \&os)
+\item 
+std\+::ostream \& \mbox{\hyperlink{classlibs_1_1report__generator_1_1report__generator_ac73479745fc4fe4a5a4eeb5832ca3354}{console\+\_\+log}} (std\+::ostream \&os)
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{classlibs_1_1report__generator_1_1report__generator_ac787e2ce3601d25538fb2b500ba33976}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classlibs_1_1report__generator_1_1report__generator}{report\+\_\+generator}} \&this\+\_\+obj)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlibs_1_1report__generator_1_1report__generator_aab1f374eaca60fed05cda5777af46fbc}\label{classlibs_1_1report__generator_1_1report__generator_aab1f374eaca60fed05cda5777af46fbc}} 
+\index{libs::report\_generator::report\_generator@{libs::report\_generator::report\_generator}!report\_generator@{report\_generator}}
+\index{report\_generator@{report\_generator}!libs::report\_generator::report\_generator@{libs::report\_generator::report\_generator}}
+\doxysubsubsection{\texorpdfstring{report\_generator()}{report\_generator()}}
+{\footnotesize\ttfamily libs\+::report\+\_\+generator\+::report\+\_\+generator\+::report\+\_\+generator (\begin{DoxyParamCaption}\item[{const array\+\_\+of\+\_\+entries \&}]{frequency\+\_\+entries,  }\item[{const array\+\_\+of\+\_\+entries \&}]{smiley\+\_\+entries }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor with arguments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frequency\+\_\+entries} & represents a vector of pairs of words and frequencies \\
+\hline
+{\em smiley\+\_\+entries} & represents a vector of pairs of smileys and positions \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlibs_1_1report__generator_1_1report__generator_ac73479745fc4fe4a5a4eeb5832ca3354}\label{classlibs_1_1report__generator_1_1report__generator_ac73479745fc4fe4a5a4eeb5832ca3354}} 
+\index{libs::report\_generator::report\_generator@{libs::report\_generator::report\_generator}!console\_log@{console\_log}}
+\index{console\_log@{console\_log}!libs::report\_generator::report\_generator@{libs::report\_generator::report\_generator}}
+\doxysubsubsection{\texorpdfstring{console\_log()}{console\_log()}}
+{\footnotesize\ttfamily std\+::ostream \& libs\+::report\+\_\+generator\+::report\+\_\+generator\+::console\+\_\+log (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Prints the output into console 
+\begin{DoxyParams}{Parameters}
+{\em os} & a {\ttfamily std\+::ostream\&} object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily std\+::ostream\&} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibs_1_1report__generator_1_1report__generator_a2bccb865d47a3660972e94f30b69dacc}\label{classlibs_1_1report__generator_1_1report__generator_a2bccb865d47a3660972e94f30b69dacc}} 
+\index{libs::report\_generator::report\_generator@{libs::report\_generator::report\_generator}!generate\_file@{generate\_file}}
+\index{generate\_file@{generate\_file}!libs::report\_generator::report\_generator@{libs::report\_generator::report\_generator}}
+\doxysubsubsection{\texorpdfstring{generate\_file()}{generate\_file()}}
+{\footnotesize\ttfamily std\+::ostream \& libs\+::report\+\_\+generator\+::report\+\_\+generator\+::generate\+\_\+file (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Generates the output TEXT file 
+\begin{DoxyParams}{Parameters}
+{\em os} & a {\ttfamily std\+::ostream\&} object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily std\+::ostream\&} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibs_1_1report__generator_1_1report__generator_abf95c72d74b91ef92fc2eda6d178703b}\label{classlibs_1_1report__generator_1_1report__generator_abf95c72d74b91ef92fc2eda6d178703b}} 
+\index{libs::report\_generator::report\_generator@{libs::report\_generator::report\_generator}!generate\_xml@{generate\_xml}}
+\index{generate\_xml@{generate\_xml}!libs::report\_generator::report\_generator@{libs::report\_generator::report\_generator}}
+\doxysubsubsection{\texorpdfstring{generate\_xml()}{generate\_xml()}}
+{\footnotesize\ttfamily std\+::ostream \& libs\+::report\+\_\+generator\+::report\+\_\+generator\+::generate\+\_\+xml (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Generates the output XML file 
+\begin{DoxyParams}{Parameters}
+{\em os} & a {\ttfamily std\+::ostream\&} object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily std\+::ostream\&} 
+\end{DoxyReturn}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classlibs_1_1report__generator_1_1report__generator_ac787e2ce3601d25538fb2b500ba33976}\label{classlibs_1_1report__generator_1_1report__generator_ac787e2ce3601d25538fb2b500ba33976}} 
+\index{libs::report\_generator::report\_generator@{libs::report\_generator::report\_generator}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!libs::report\_generator::report\_generator@{libs::report\_generator::report\_generator}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classlibs_1_1report__generator_1_1report__generator}{report\+\_\+generator}} \&}]{this\+\_\+obj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{report__generator_8hpp}{report\+\_\+generator.\+hpp}}\end{DoxyCompactItemize}

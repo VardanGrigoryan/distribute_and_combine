@@ -1,0 +1,133 @@
+\hypertarget{classlibs_1_1safe__datastructure_1_1task__queue}{}\doxysection{libs\+::safe\+\_\+datastructure\+::task\+\_\+queue\texorpdfstring{$<$}{<} T, U \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classlibs_1_1safe__datastructure_1_1task__queue}\index{libs::safe\_datastructure::task\_queue$<$ T, U $>$@{libs::safe\_datastructure::task\_queue$<$ T, U $>$}}
+
+
+Implements a thread safe queue which is required to hold pending tasks.  
+
+
+
+
+{\ttfamily \#include $<$task\+\_\+queue.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue_af9c6fc0c779ddbae7bc59cadf830ed53}{task\+\_\+queue}} ()
+\item 
+\mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue_ab07427ce162689bd7865ae3960414534}{$\sim$task\+\_\+queue}} ()
+\item 
+void \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue_ad825c1325754aa88f8ee7127f91312f0}{push}} (std\+::tuple$<$ T, U, U $>$ \&\&t)
+\item 
+std\+::unique\+\_\+ptr$<$ std\+::tuple$<$ T, U, U $>$ $>$ \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue_a16a355700eee2eff3924a4af4117bb39}{pop}} ()
+\item 
+bool \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue_a05809a97babb7488ee3e39a0093fefe5}{empty}} () const
+\item 
+size\+\_\+t \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue_a213b97c0be55d6003175aafb1903f39c}{size}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename U$>$\newline
+class libs\+::safe\+\_\+datastructure\+::task\+\_\+queue$<$ T, U $>$}
+Implements a thread safe queue which is required to hold pending tasks. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & the type of data stored in the map as a key \\
+\hline
+{\em U} & the type of data stored in the map as a value \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlibs_1_1safe__datastructure_1_1task__queue_af9c6fc0c779ddbae7bc59cadf830ed53}\label{classlibs_1_1safe__datastructure_1_1task__queue_af9c6fc0c779ddbae7bc59cadf830ed53}} 
+\index{libs::safe\_datastructure::task\_queue$<$ T, U $>$@{libs::safe\_datastructure::task\_queue$<$ T, U $>$}!task\_queue@{task\_queue}}
+\index{task\_queue@{task\_queue}!libs::safe\_datastructure::task\_queue$<$ T, U $>$@{libs::safe\_datastructure::task\_queue$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{task\_queue()}{task\_queue()}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+\mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue}{libs\+::safe\+\_\+datastructure\+::task\+\_\+queue}}$<$ T, U $>$\+::\mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue}{task\+\_\+queue}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+The default constructor \mbox{\Hypertarget{classlibs_1_1safe__datastructure_1_1task__queue_ab07427ce162689bd7865ae3960414534}\label{classlibs_1_1safe__datastructure_1_1task__queue_ab07427ce162689bd7865ae3960414534}} 
+\index{libs::safe\_datastructure::task\_queue$<$ T, U $>$@{libs::safe\_datastructure::task\_queue$<$ T, U $>$}!````~task\_queue@{$\sim$task\_queue}}
+\index{````~task\_queue@{$\sim$task\_queue}!libs::safe\_datastructure::task\_queue$<$ T, U $>$@{libs::safe\_datastructure::task\_queue$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$task\_queue()}{~task\_queue()}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+\mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue}{libs\+::safe\+\_\+datastructure\+::task\+\_\+queue}}$<$ T, U $>$\+::$\sim$\mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue}{task\+\_\+queue}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+The destructor 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlibs_1_1safe__datastructure_1_1task__queue_a05809a97babb7488ee3e39a0093fefe5}\label{classlibs_1_1safe__datastructure_1_1task__queue_a05809a97babb7488ee3e39a0093fefe5}} 
+\index{libs::safe\_datastructure::task\_queue$<$ T, U $>$@{libs::safe\_datastructure::task\_queue$<$ T, U $>$}!empty@{empty}}
+\index{empty@{empty}!libs::safe\_datastructure::task\_queue$<$ T, U $>$@{libs::safe\_datastructure::task\_queue$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+bool \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue}{libs\+::safe\+\_\+datastructure\+::task\+\_\+queue}}$<$ T, U $>$\+::empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Checks whether the queue is empty \begin{DoxyReturn}{Returns}
+{\ttfamily bool} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibs_1_1safe__datastructure_1_1task__queue_a16a355700eee2eff3924a4af4117bb39}\label{classlibs_1_1safe__datastructure_1_1task__queue_a16a355700eee2eff3924a4af4117bb39}} 
+\index{libs::safe\_datastructure::task\_queue$<$ T, U $>$@{libs::safe\_datastructure::task\_queue$<$ T, U $>$}!pop@{pop}}
+\index{pop@{pop}!libs::safe\_datastructure::task\_queue$<$ T, U $>$@{libs::safe\_datastructure::task\_queue$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{pop()}{pop()}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+std\+::unique\+\_\+ptr$<$ std\+::tuple$<$ T, U, U $>$ $>$ \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue}{libs\+::safe\+\_\+datastructure\+::task\+\_\+queue}}$<$ T, U $>$\+::pop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Thread-\/safely pops the task from the queue 
+\begin{DoxyParams}{Parameters}
+{\em t} & is a tuple which holds the word/actua value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & the value type \\
+\hline
+{\em U} & the global position type \\
+\hline
+{\em value} & type\textquotesingle{}s length \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily std\+::unique\+\_\+ptr\texorpdfstring{$<$}{<}std\+::tuple\texorpdfstring{$<$}{<}T, U, U\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibs_1_1safe__datastructure_1_1task__queue_ad825c1325754aa88f8ee7127f91312f0}\label{classlibs_1_1safe__datastructure_1_1task__queue_ad825c1325754aa88f8ee7127f91312f0}} 
+\index{libs::safe\_datastructure::task\_queue$<$ T, U $>$@{libs::safe\_datastructure::task\_queue$<$ T, U $>$}!push@{push}}
+\index{push@{push}!libs::safe\_datastructure::task\_queue$<$ T, U $>$@{libs::safe\_datastructure::task\_queue$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{push()}{push()}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+void \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue}{libs\+::safe\+\_\+datastructure\+::task\+\_\+queue}}$<$ T, U $>$\+::push (\begin{DoxyParamCaption}\item[{std\+::tuple$<$ T, U, U $>$ \&\&}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Thread-\/safely pushes the task into the queue 
+\begin{DoxyParams}{Parameters}
+{\em t} & is a tuple which holds the word/actua value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & the value type \\
+\hline
+{\em U} & the global position type \\
+\hline
+{\em value} & type\textquotesingle{}s length \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlibs_1_1safe__datastructure_1_1task__queue_a213b97c0be55d6003175aafb1903f39c}\label{classlibs_1_1safe__datastructure_1_1task__queue_a213b97c0be55d6003175aafb1903f39c}} 
+\index{libs::safe\_datastructure::task\_queue$<$ T, U $>$@{libs::safe\_datastructure::task\_queue$<$ T, U $>$}!size@{size}}
+\index{size@{size}!libs::safe\_datastructure::task\_queue$<$ T, U $>$@{libs::safe\_datastructure::task\_queue$<$ T, U $>$}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$typename T , typename U $>$ \\
+size\+\_\+t \mbox{\hyperlink{classlibs_1_1safe__datastructure_1_1task__queue}{libs\+::safe\+\_\+datastructure\+::task\+\_\+queue}}$<$ T, U $>$\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Gets the queue size \begin{DoxyReturn}{Returns}
+{\ttfamily size\+\_\+t} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{task__queue_8hpp}{task\+\_\+queue.\+hpp}}\end{DoxyCompactItemize}

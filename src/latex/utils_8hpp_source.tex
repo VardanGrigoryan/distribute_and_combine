@@ -1,0 +1,41 @@
+\hypertarget{utils_8hpp_source}{}\doxysection{utils.\+hpp}
+\mbox{\hyperlink{utils_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_\_UTILS\_HPP\_\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_\_UTILS\_HPP\_\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <boost/algorithm/string.hpp>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <iterator>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <regex>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <unordered\_map>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacelibs}{libs}} \{}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{namespace }utils \{}
+\DoxyCodeLine{20     std::vector<std::string> \mbox{\hyperlink{namespacelibs_1_1utils_ae5a508f74be891b9e73e2073abda2e5b}{split\_by\_any\_of\_special\_character}}(\textcolor{keyword}{const} std::string\& input, }
+\DoxyCodeLine{21             boost::algorithm::token\_compress\_mode\_type eCompress=boost::token\_compress\_on) \{}
+\DoxyCodeLine{22         std::vector<std::string> words\{\};}
+\DoxyCodeLine{23         boost::split(words, input, boost::is\_any\_of(\textcolor{stringliteral}{"{}\(\backslash\)t\(\backslash\)n,.;`\(\backslash\)"{}?<>/+-\/*!@\#\$\%\string^\&\string~(\{[)\}]: "{}}), eCompress);}
+\DoxyCodeLine{24         \textcolor{keywordflow}{return} words;   }
+\DoxyCodeLine{25     \}}
+\DoxyCodeLine{34     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} U>}
+\DoxyCodeLine{35     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacelibs_1_1utils_aa8291472f528a07fde5f1479a14722ac}{search\_smileys}}(\textcolor{keyword}{const} std::tuple<T, U, U>\& tuple, }
+\DoxyCodeLine{36             std::unordered\_map<T, std::vector<U>>\& smileys) \{}
+\DoxyCodeLine{37         std::smatch res;}
+\DoxyCodeLine{38         \textcolor{keyword}{const} std::regex pat(\textcolor{stringliteral}{"{}(:-\/?(\(\backslash\)\(\backslash\))|\(\backslash\)\(\backslash\)\}|\(\backslash\)\(\backslash\)]|\(\backslash\)\(\backslash\)(|\(\backslash\)\(\backslash\)\{|\(\backslash\)\(\backslash\)[))"{}});}
+\DoxyCodeLine{39         \textcolor{keyword}{const} T\& item = std::get<0>(tuple);}
+\DoxyCodeLine{40         \textcolor{keywordflow}{for}(std::sregex\_iterator it = }
+\DoxyCodeLine{41                 std::sregex\_iterator(item.cbegin(), item.cend(), pat); }
+\DoxyCodeLine{42                 it != std::sregex\_iterator(); ++it) \{}
+\DoxyCodeLine{43             std::smatch match = *it;}
+\DoxyCodeLine{44             smileys[match.str()].push\_back(std::get<1>(tuple) -\/ std::get<2>(tuple) + match.position() + 1);}
+\DoxyCodeLine{45         \}}
+\DoxyCodeLine{46     \}}
+\DoxyCodeLine{47 \}}
+\DoxyCodeLine{48 \}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_\_UTILS\_HPP\_\_}}
+
+\end{DoxyCode}
