@@ -1,4 +1,4 @@
-# Text analyzer
+# A toy just for fun text analizer project based on distribute and combine pattern
 
 ## Introduction
 Text analyzer is a scalable, offline, multithreaded software solution developed in a library-like, headers-only maner which is capable to process huge files and extract the required information even when the input file is bigger that the ram memory available on the processing machine.
