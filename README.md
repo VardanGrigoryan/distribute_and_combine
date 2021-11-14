@@ -2,7 +2,7 @@
 
 ## Introduction
 Text analyzer is a scalable, offline, multithreaded software solution developed in a library-like, headers-only maner which is capable to process huge files and extract the required information even when the input file is bigger that the ram memory available on the processing machine.
-Currently it supports only two types of infomation retrieval:
+Currently, it supports only two types of infomation retrieval:
 - words and their appropriate frequencies
 - smileys and their global positions in the original text
 
@@ -31,7 +31,7 @@ Text analyzer uses the following stack:
 As a build system CMake has been used and was written so it could be compiled and executed on linux and windows environments.
 
 ## Build
-Dockerfile is provided so one can build and execute the project on a totaly isolated environmrnt. Here is an issue ralted with os image version that's not fixed inthis initial version!
+Dockerfile is provided so one can build and execute the project on a totaly isolated environmrnt. Here is an issue related with an os image version that's not fixed in this initial version!
 In order to build the project manually, please follow to bellow described steps:
 ```
 $ cd [project directory]
