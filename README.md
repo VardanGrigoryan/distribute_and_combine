@@ -1,4 +1,4 @@
-# A toy, just-for-fun text analyzer project based on distribute and combine pattern
+# Text analyzer, initial sample
 
 ## Introduction
 Text analyzer is a scalable, offline, multithreaded software solution developed in a library-like, headers-only maner which is capable to process huge files and extract the required information even when the input file is bigger then the ram memory available on the processing machine.
@@ -7,7 +7,7 @@ Currently, it supports only two types of infomation retrieval:
 - smileys and their global positions in the original text
 
 ### High level algorithm
-Text analyzer is using distribute and combine strategy. It processes an input file by chunks which is configurable, so one can try a different values for the chunk sizes. Each read chunk of text is distributing to separate thread by so parallelizing the overall process. At the same time it is also combining the processed data, so reading and processing are almost going in parallel. When thread completes a task the results can be keeped in two ways in ram-memory or in persistend disk. In the later case, the overall process will be slightly slower as multiple database queries are taking place, but on the other hand it is capable to process huge files. When the input file is smaller then database usage can by bypassed.
+This programm processes an input file by chunks which is configurable, so one can try a different values for the chunk sizes. Each read chunk of text is distributing to separate thread by so parallelizing the overall process. At the same time it is also combining the processed data, so reading and processing are almost going in parallel. When thread completes a task the results can be keeped in two ways in ram-memory or in persistend disk. In the later case, the overall process will be slightly slower as multiple database queries are taking place, but on the other hand it is capable to process huge files. When the input file is smaller then database usage can by bypassed.
 
 After having all the results combined it generates an output statistics. Currently there are three types of it:
 - xml file
