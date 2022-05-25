@@ -117,6 +117,9 @@ namespace libs {
 			return operator<<(os);
 		}
 	public:
+		/**
+		 * @brief Default constructor
+		 */
 		report_generator() {}
 		/**
 		 * @brief Constructor with arguments
@@ -135,9 +138,6 @@ namespace libs {
 						smiley_entries.begin(), smiley_entries.end());
 				init();
 			}
-		report_generator& operator=(const report_generator& rhs) {
-			return *this;
-		}
 		void generate_logs(std::ostream& os) {
 			m_log_policy->generate(os, *this);
 		}
