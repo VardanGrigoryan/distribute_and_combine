@@ -11,7 +11,11 @@
 
 namespace libs {
 	namespace report_generator {
+	class xml_generator;
+	class out_file_generator;
+	class console_out;
 
+	template <typename LogPolicy>
 	class report_generator {
 	private:
 		struct Node {
@@ -26,6 +30,7 @@ namespace libs {
 		using array_of_smilye_nodes = std::vector<Node>;
 		std::unique_ptr<array_of_frequency_nodes> m_frequency_nodes;
 		std::unique_ptr<array_of_smilye_nodes> m_smilye_nodes;
+		std::unique_ptr<LogPolicy> m_log_policy;
 	private:
 		void init() {
 			if(m_frequency_entries && m_frequency_nodes) {
@@ -55,23 +60,34 @@ namespace libs {
 				}
 			}
 		}
-	public:
-		/**
-		 * @brief Constructor with arguments
-		 * \param frequency_entries represents a vector of pairs of words and frequencies
-		 * \param smiley_entries represents a vector of pairs of smileys and positions
-		 */
-		report_generator(const array_of_entries& frequency_entries, const array_of_entries& smiley_entries): 
-			m_frequency_entries(std::make_unique<array_of_entries>()), 
-			m_smilye_entries(std::make_unique<array_of_entries>()), 
-			m_frequency_nodes(std::make_unique<array_of_frequency_nodes>()),
-			m_smilye_nodes(std::make_unique<array_of_smilye_nodes>()) {
-				m_frequency_entries.get()->insert(m_frequency_entries.get()->end(), 
-						frequency_entries.begin(), frequency_entries.end());
-				m_smilye_entries.get()->insert(m_smilye_entries.get()->end(), 
-						smiley_entries.begin(), smiley_entries.end());
-				init();
+		std::ostream& operator<<(std::ostream& os) {
+			const size_t size = m_frequency_nodes.get()->size();
+			os << "Words and their frequencies\n";
+			for(int i = 0; i < size; ++i) {
+				os << "Word: " << m_frequency_nodes.get()->at(i).word << 
+					",\n" << "Frequency: " << 
+					m_frequency_nodes.get()->at(i).frequency << ";\n";
 			}
+			const size_t sz = m_smilye_nodes.get()->size();
+			os << "\nSmileys and their positions\n";
+			for(int i = 0; i < sz; ++i) {
+				os << "Smiley: " << m_smilye_nodes->at(i).word << 
+					",\n" << "Position: " << 
+					m_smilye_nodes->at(i).frequency << ";\n";
+			}
+			return os;
+		}
+		friend class xml_generator;
+		friend class out_file_generator;
+		friend class console_out;
+		/**
+		 * Generates the output TEXT file
+		 * \param os a `std::ostream&` object
+		 * @returns `std::ostream&`
+		 */
+		std::ostream& generate_file(std::ostream& os) {
+			return operator<<(os);
+		}
 		/**
 		 * Generates the output XML file
 		 * \param os a `std::ostream&` object
@@ -92,42 +108,62 @@ namespace libs {
 			boost::property_tree::write_xml(os, pt);
 			return os;
 		}
-		friend std::ostream& operator<<(std::ostream& os, const report_generator& this_obj);
-		/**
-		 * Generates the output TEXT file
-		 * \param os a `std::ostream&` object
-		 * @returns `std::ostream&`
-		 */
-		std::ostream& generate_file(std::ostream& os) {
-			return operator<<(os, *this);
-		}
 		/**
 		 * Prints the output into console
 		 * \param os a `std::ostream&` object
 		 * @returns `std::ostream&`
 		 */
 		std::ostream& console_log(std::ostream& os) {
-			return operator<<(os, *this);
+			return operator<<(os);
+		}
+	public:
+		report_generator() {}
+		/**
+		 * @brief Constructor with arguments
+		 * \param frequency_entries represents a vector of pairs of words and frequencies
+		 * \param smiley_entries represents a vector of pairs of smileys and positions
+		 */
+		report_generator(const array_of_entries& frequency_entries, const array_of_entries& smiley_entries): 
+			m_frequency_entries(std::make_unique<array_of_entries>()), 
+			m_smilye_entries(std::make_unique<array_of_entries>()), 
+			m_frequency_nodes(std::make_unique<array_of_frequency_nodes>()),
+			m_smilye_nodes(std::make_unique<array_of_smilye_nodes>()),
+		        m_log_policy(std::make_unique<LogPolicy>()) {
+				m_frequency_entries.get()->insert(m_frequency_entries.get()->end(), 
+						frequency_entries.begin(), frequency_entries.end());
+				m_smilye_entries.get()->insert(m_smilye_entries.get()->end(), 
+						smiley_entries.begin(), smiley_entries.end());
+				init();
+			}
+		report_generator& operator=(const report_generator& rhs) {
+			return *this;
+		}
+		void generate_logs(std::ostream& os) {
+			m_log_policy->generate(os, *this);
 		}
 };
 
-std::ostream& operator<<(std::ostream& os, const report_generator& this_obj) {
-	const size_t size = this_obj.m_frequency_nodes.get()->size();
-	os << "Words and their frequencies\n";
-	for(int i = 0; i < size; ++i) {
-		os << "Word: " << this_obj.m_frequency_nodes.get()->at(i).word << 
-			",\n" << "Frequency: " << 
-			this_obj.m_frequency_nodes.get()->at(i).frequency << ";\n";
-	}
-	const size_t sz = this_obj.m_smilye_nodes.get()->size();
-	os << "\nSmileys and their positions\n";
-	for(int i = 0; i < sz; ++i) {
-		os << "Smiley: " << this_obj.m_smilye_nodes->at(i).word << 
-			",\n" << "Position: " << 
-			this_obj.m_smilye_nodes->at(i).frequency << ";\n";
-	}
-	return os;
-}
+class xml_generator {
+	public:
+		std::ostream& generate(std::ostream& os, report_generator<xml_generator>& this_obj) {
+			return this_obj.generate_xml(os);
+		}
+};
+
+class out_file_generator {
+	public:
+		std::ostream& generate(std::ostream& os, report_generator<out_file_generator>& this_obj) {
+			return this_obj.generate_file(os);
+		}
+};
+
+class console_out {
+	public:
+		std::ostream& generate(std::ostream& os, report_generator<console_out>& this_obj) {
+			return this_obj.console_log(std::cout);
+		}
+};
+
 }
 }
 

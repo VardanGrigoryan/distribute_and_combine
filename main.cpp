@@ -91,21 +91,28 @@ int main(int argc, char** argv) {
 				std::cout << "Usage error: Missing output file path\n";
 				return 1;
 			}
-			libs::report_generator::report_generator out_gen(response, smilyes);
+			std::string out_path = vm["output_file_path"].as<std::string>();
+			std::ofstream output(out_path);
+			namespace rgen = libs::report_generator;
+			namespace ut = libs::utils;
+			/*
+			 * No dynamic cast!
+			 * Unfortunately we can't apply type selection metaprogramming technique here as output format should be known at compile time.
+			 * Conceptually, there are 3 different types of generators and 3 different instances of report generators respectively.
+			 * The run-time is almost the same as in case of virtual call mechanism and so, a heterogenus container with visitor pattern applied seems more clean solution to me.
+			 */ 
+			std::variant<rgen::report_generator<rgen::xml_generator>, rgen::report_generator<rgen::out_file_generator>, rgen::report_generator<rgen::console_out>> gen;
 			if(format == "xml") {
-				std::string out_path = vm["output_file_path"].as<std::string>();
-				std::ofstream output(out_path);
-				out_gen.generate_xml(output);
+				gen.emplace<rgen::report_generator<rgen::xml_generator>>(response, smilyes);
 			} else if(format == "file") {
-				std::string out_path = vm["output_file_path"].as<std::string>();
-				std::ofstream output(out_path);
-				out_gen.generate_file(output);
+				gen.emplace<rgen::report_generator<rgen::out_file_generator>>(response, smilyes);
 			} else if(format == "console") {
-				out_gen.console_log(std::cout);
+				gen.emplace<rgen::report_generator<rgen::console_out>>(response, smilyes);
 			} else {
 				std::cout << "Usage error: Invalid output format: " << format << "\n";
 				return 1;
 			}
+			std::visit([&output](auto& v) {v.generate_logs(output);}, gen);
 		}
 	} catch(libs::exception::custom_exception& exp) {
 		std::cout << exp.what() << "\n";

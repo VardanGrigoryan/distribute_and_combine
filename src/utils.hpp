@@ -44,6 +44,19 @@ namespace utils {
 			smileys[match.str()].push_back(std::get<1>(tuple) - std::get<2>(tuple) + match.position() + 1);
 		}
 	}
+	
+	template <int flag, typename U, typename V, typename Y>
+	struct select3 {
+		typedef U type;
+	};
+	template <typename U, typename V, typename Y>
+	struct select3<1, U, V, Y> {
+		typedef V type;
+	};
+	template <typename U, typename V, typename Y>
+	struct select3<2, U, V, Y> {
+		typedef Y type;
+	};
 }
 }
 
